@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  containers:
+    - name: test-container
+      image: k8s.gcr.io/busybox:1.24
+      command: ["sh", "-c"]
+      args:
+        - while true; do
+          cat /etc/mem.var;
+          cat /etc/cpu.var;
+          break;
+          done;
+      volumeMounts:
+        - name: workdir
+          mountPath: /etc/
+  initContainers:
+    - name: init-container
+      image: k8s.gcr.io/busybox:1.24
+      command: ["sh", "-c"]
+      args:
+        - while true; do
+          echo "$MY_CPU_LIMIT" >> /work-dir/cpu.var;
+          echo "$MY_MEM_LIMIT" >> /work-dir/mem.var;
+          break;
+          done;
+      resources:
+        requests:
+          memory: "32Mi"
+          cpu: "125m"
+        limits:
+          memory: "64Mi"
+          cpu: "250m"
+      env:
+        - name: MY_CPU_REQUEST
+          valueFrom:
+            resourceFieldRef:
+              containerName: test-container
+              resource: requests.cpu
+        - name: MY_CPU_LIMIT
+          valueFrom:
+            resourceFieldRef:
+              containerName: test-container
+              resource: limits.cpu
+        - name: MY_MEM_REQUEST
+          valueFrom:
+            resourceFieldRef:
+              containerName: test-container
+              resource: requests.memory
+        - name: MY_MEM_LIMIT
+          valueFrom:
+            resourceFieldRef:
+              containerName: test-container
+              resource: limits.memory
+      volumeMounts:
+        - name: workdir
+          mountPath: "/work-dir"
+  dnsPolicy: Default
+  volumes:
+    - name: workdir
+      emptyDir: {}

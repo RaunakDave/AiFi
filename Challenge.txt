@@ -1,0 +1,37 @@
+TechOps Challenge 1: Kubernetes initContainer 
+    Create a Kubernetes Pod manifest with the following requirements: 
+    An initContainer that retrieves the number of CPU cores and memory available in the system and saves them for further usage. 
+    A container that uses the previous variables and logs them in the stdout of the pod. 
+
+TechOps Challenge 2: Build a simple API that interfaces with relational database. 
+    Schema: 
+        Customer: 
+            ID 
+            FirstName 
+            LastName 
+            Age 
+            Email 
+            StoreID (Foreign Key) 
+            Cases (Foreign Key) 
+        
+        Store: 
+            ID 
+            Name 
+            Address 
+            Customers (Foreign Key) 
+            Cases (Foreign Key) 
+
+        Case: 
+            ID 
+            StartTimestamp 
+            EndTimestamp 
+            CustomerID (Foreign Key) 
+            StoreID (Foreign Key) 
+
+    Endpoints: 
+        CRUD for Customer 
+        CRUD for Store 
+        CRUD for Cases  
+
+Upload code to Github repository and README.md with instructions on how to run it. 
+Provide a performance test for 1000 GET queries on customers, stores, and cases. 
