@@ -1,15 +1,15 @@
 #### Challenge 1:
 
-Usage:  
-Install minikube:
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-sudo install minikube-darwin-amd64 /usr/local/bin/minikube
-Start minikube:
-minikube delete && minikube start --vm-driver=docker
-Apply all 1 .yaml:
-kubectl apply -f dapi-envars-container.yaml
-See logs:
-kubectl logs init-demo
+Usage:    
+Install minikube:  
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64  
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube  
+Start minikube:  
+minikube delete && minikube start --vm-driver=docker  
+Apply all 1 .yaml:  
+kubectl apply -f dapi-envars-container.yaml  
+See logs:  
+kubectl logs init-demo  
 
 ### Challenge 2:
 
@@ -33,63 +33,63 @@ I am using only one collection to model the necessary relationships. That collec
 
 The schema of each document in the customer collection is as below:
 
-{
-"customer":
-{
-"FirstName": "Raunak",
-"LastName": "Dave",
-"Age": "31", "
-Email": "raunak_dave@icloud.com",
-"case":
-[
-{
-"Number": "1",
-"StartTimeStamp": "0",
-"EndTimeStamp": "1",
-"store":
-{
-"Name": "BLR",
-"Address": "Bangalore"
-}
-},
-{
-"Number": "2",
-"StartTimeStamp": "2",
-"EndTimeStamp": "3",
-"store":
-{
-"Name": "NM",
-"Address": "New Mexico"
-}
-}
-]
-}
-}
+{  
+"customer":  
+{  
+"FirstName": "Raunak",  
+"LastName": "Dave",  
+"Age": "31",   
+"Email": "raunak_dave@icloud.com",  
+"case":  
+[  
+{  
+"Number": "1",  
+"StartTimeStamp": "0",  
+"EndTimeStamp": "1",  
+"store":  
+{  
+"Name": "BLR",  
+"Address": "Bangalore"  
+}  
+},  
+{  
+"Number": "2",  
+"StartTimeStamp": "2",  
+"EndTimeStamp": "3",  
+"store":  
+{  
+"Name": "NM",  
+"Address": "New Mexico"  
+}  
+}  
+]  
+}  
+}  
 
 Bootstrapping has been done for the DB with some dummy entries.
 
-Usage:
-Install docker.
-Start docker.
-Install minikube:
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-sudo install minikube-darwin-amd64 /usr/local/bin/minikube
-Start minikube:
-minikube delete && minikube start --vm-driver=docker
-Apply all 6 .yamls.
-Bash into the app pod:
-kubectl exec -it app-xxxxxxxx bash
-Bootstrap DB:
-chmod +x bootstrap_db.sh
-./bootstrap_db.sh
+Usage:  
+Install docker.  
+Start docker.  
+Install minikube:  
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64  
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube  
+Start minikube:  
+minikube delete && minikube start --vm-driver=docker  
+Apply all 6 .yamls.  
+Bash into the app pod:  
+kubectl exec -it app-xxxxxxxx bash  
+Bootstrap DB:  
+chmod +x bootstrap_db.sh  
+./bootstrap_db.sh  
 
 See usage.txt for usage.
 
-Performance Testing:
-Bash into the app pod:
-kubectl exec -it app-xxxxxxxx bash
-Bootstrap DB:
-chmod +x bootstrap_db.sh
-./bootstrap_db.sh
-locust -f tester.py --headless -u 1000 -r 100 --host wfng
-Ctrl + c at your own leisure.
+Performance Testing:  
+Bash into the app pod:  
+kubectl exec -it app-xxxxxxxx bash  
+Bootstrap DB:  
+chmod +x bootstrap_db.sh  
+./bootstrap_db.sh  
+locust -f tester.py --headless -u 1000 -r 100 --host wfng  
+Ctrl + c at your own leisure.  
