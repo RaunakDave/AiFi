@@ -2,7 +2,7 @@ bash-4.4# curl localhost:5000
 
 bash-4.4# curl localhost:5000/customers
 
-bash-4.4# curl -X POST -d "{\"customer\": {\"FirstName\": \"Raunak\", \"LastName\": \"Dave\", \"Age\": \"31\", \"Email\": \"raunak_dave@icloud.com\", \"case\": [{\"Number\": \"1\", \"StartTimeStamp\": \"0\", \"EndTimeStamp\": \"1\", \"store\": {\"Name\": \"BLR\", \"Address\": \"Bangalore\"}}, {\"Number\": \"2\", \"StartTimeStamp\": \"2\", \"EndTimeStamp\": \"3\", \"store\": {\"Name\": \"NM\", \"Address\": \"New Mexico\"}}]}}" http://localhost:5000/customer
+bash-4.4# curl -X POST -d "{\"customer\": {\"FirstName\": \"Raunak\", \"LastName\": \"Dave\", \"Age\": \"31\", \"Email\": \"raunak_dave007@gmail.com\", \"case\": [{\"Number\": \"1\", \"StartTimeStamp\": \"0\", \"EndTimeStamp\": \"1\", \"store\": {\"Name\": \"BLR\", \"Address\": \"Bangalore\"}}, {\"Number\": \"2\", \"StartTimeStamp\": \"2\", \"EndTimeStamp\": \"3\", \"store\": {\"Name\": \"NM\", \"Address\": \"New Mexico\"}}]}}" http://localhost:5000/customer
 
 bash-4.4# curl -X PUT -d "{\"customer\": {\"FirstName\": \"Brian\", \"LastName\": \"Bates\", \"Age\": \"32\", \"Email\": \"brian_bates@icloud.com\", \"case\": [{\"Number\": \"1\", \"StartTimeStamp\": \"0\", \"EndTimeStamp\": \"1\", \"store\": {\"Name\": \"NY\", \"Address\": \"Las Vegas\"}}]}}" http://localhost:5000/customer/<id>
 
